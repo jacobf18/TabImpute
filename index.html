@@ -76,6 +76,8 @@ h1 { font-size: clamp(36px, 5vw, 52px); line-height: 1.05; letter-spacing: -.025
 .lede { font-size: 17px; color: var(--muted); margin: 0 0 12px; max-width: 34em; }
 .authors { font-size: 14.5px; color: var(--muted); margin: 16px 0 24px; }
 .authors b { color: var(--text); font-weight: 600; }
+.authors a { color: inherit; text-decoration: underline; text-decoration-color: color-mix(in srgb, currentColor 30%, transparent); text-underline-offset: 3px; }
+.authors a:hover { color: var(--accent); text-decoration-color: currentColor; }
 .btns { display: flex; flex-wrap: wrap; gap: 10px; }
 .btn { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 8px; font-size: 14.5px; font-weight: 600; border: 1px solid var(--border); background: var(--surface); color: var(--text); box-shadow: var(--shadow); }
 .btn:hover { text-decoration: none; border-color: var(--muted); }
@@ -249,7 +251,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
       <h1>TabImpute</h1>
       <p class="paper-title">One Pipeline, Many Transformers: Pattern-Specific Imputation Specialists for Tabular Missing Data</p>
       <p class="lede">A single pre-training pipeline that turns synthetic data into transformer imputers. The default TabImpute model is robust across every missingness pattern we tested. Swap one module, and the same pipeline builds a specialist for the pattern you expect.</p>
-      <p class="authors"><b>Jacob Feitelberg</b>, Dwaipayan Saha, Kyuseong Choi, Zaid Ahmad, Anish Agarwal, Raaz Dwivedi</p>
+      <p class="authors"><a href="https://jacobf18.github.io">Jacob Feitelberg</a>, <a href="https://dsaha04.github.io/">Dwaipayan Saha</a>, <a href="https://kyuseongchoi5.github.io/">Kyuseong Choi</a>, Zaid Ahmad, <a href="https://sites.google.com/view/anishagarwal/home">Anish Agarwal</a>, <a href="https://raazdwivedi.github.io/">Raaz Dwivedi</a></p>
       <div class="btns">
         <a class="btn primary" href="https://arxiv.org/abs/2510.02625">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg>
@@ -464,7 +466,6 @@ X_imputed = imputer.<span class="tk-f">impute</span>(X.copy())</pre>
 <footer>
   <div class="wrap">
     <span>TabImpute · <a href="https://github.com/jacobf18/tabular">GitHub</a> · <a href="https://huggingface.co/Tabimpute/TabImpute">Hugging Face</a> · <a href="https://arxiv.org/abs/2510.02625">arXiv</a> · <a href="https://jacobf18.github.io/MatrixFormer/">MatrixFormer</a></span>
-    <span><a href="https://jacobf18.github.io">Jacob Feitelberg</a></span>
   </div>
 </footer>
 
