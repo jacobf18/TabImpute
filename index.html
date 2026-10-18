@@ -130,6 +130,16 @@ h3 { font-size: 20px; margin: 40px 0 8px; letter-spacing: -.01em; scroll-margin-
 @media (max-width: 820px) { .two { grid-template-columns: 1fr; } }
 .formula { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; font: 14px/1.9 "JetBrains Mono", monospace; overflow-x: auto; }
 .formula .c { color: var(--muted); font-size: 12.5px; }
+.recipe { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; align-self: start; }
+.recipe-head { font-size: 13px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); padding: 12px 16px; border-bottom: 1px solid var(--border); background: var(--surface-2); }
+.recipe-head span { font-weight: 500; text-transform: none; letter-spacing: 0; margin-left: 6px; }
+.recipe dl { margin: 0; }
+.recipe dl > div { display: grid; grid-template-columns: 9.5em 1fr; gap: 12px; padding: 9px 16px; border-bottom: 1px solid var(--border); font-size: 14.5px; }
+.recipe dl > div:last-child { border-bottom: 0; }
+.recipe dt { color: var(--muted); }
+.recipe dd { margin: 0; color: var(--text); font-weight: 500; }
+.recipe dd.num { font-variant-numeric: tabular-nums; }
+@media (max-width: 420px) { .recipe dl > div { grid-template-columns: 1fr; gap: 0; } }
 .callout { border-left: 3px solid var(--accent); background: var(--accent-soft); padding: 12px 16px; border-radius: 0 8px 8px 0; font-size: 14.5px; margin: 20px 0 0; max-width: 52em; }
 
 /* Charts */
@@ -369,12 +379,17 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
         <p class="prose"><b>Data:</b> complete tables come from linear factor models, <code>Y = UVᵀ</code>, with low rank <i>k</i> and latent vectors drawn from Gaussian, Laplace or Student-t distributions. A nonlinear factor model scored almost as well in ablations.</p>
         <p class="prose"><b>Missingness:</b> a mask is then applied by a pluggable module: MCAR, column-wise MAR, or any of nine MNAR generators (see <a href="#missbench">MissBench</a>). This module is the only part that changes between specialists.</p>
       </div>
-      <div class="formula" style="font-size:13px">
-        <span class="c"># per model</span><br>
-        ~1.2 million synthetic tables<br>
-        AdamW · lr 3×10⁻⁴ · weight decay 10⁻²<br>
-        batch size 16 · NLL loss<br>
-        ~10–15 hours on one H200
+      <div class="recipe" aria-label="Training recipe for each TabImpute model">
+        <div class="recipe-head">Training recipe <span>per model</span></div>
+        <dl>
+          <div><dt>Training data</dt><dd>~1.2 million synthetic tables</dd></div>
+          <div><dt>Loss</dt><dd>Negative log-likelihood (bar distribution)</dd></div>
+          <div><dt>Optimizer</dt><dd>AdamW</dd></div>
+          <div><dt>Learning rate</dt><dd class="num">3 × 10⁻⁴</dd></div>
+          <div><dt>Weight decay</dt><dd class="num">10⁻²</dd></div>
+          <div><dt>Batch size</dt><dd class="num">16</dd></div>
+          <div><dt>Compute</dt><dd>~10–15 hours on one H200</dd></div>
+        </dl>
       </div>
     </div>
 
